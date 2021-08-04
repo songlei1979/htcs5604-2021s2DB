@@ -1,8 +1,8 @@
 -- -------------------------------------------------------------
 -- SQL Commands to upgrade pmadb.pma__column_info table
--- for normal phpMyAdminLei operation
+-- for normal phpMyAdmin operation
 --
--- This file is meant for use with phpMyAdminLei 4.3.0 and above!
+-- This file is meant for use with phpMyAdmin 4.3.0 and above!
 -- For older releases, please use create_tables.sql
 --
 -- Please don't forget to set up the table names in config.inc.php

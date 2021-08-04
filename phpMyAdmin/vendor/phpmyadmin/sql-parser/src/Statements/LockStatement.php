@@ -2,6 +2,7 @@
 /**
  * `LOCK` statement.
  */
+
 declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Statements;
@@ -28,6 +29,8 @@ class LockStatement extends Statement
     /**
      * Whether it's a LOCK statement
      * if false, it's an UNLOCK statement
+     *
+     * @var bool
      */
     public $isLock = true;
 

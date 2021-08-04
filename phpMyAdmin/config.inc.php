@@ -1,20 +1,19 @@
 <?php
-/* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * phpMyAdminLei sample configuration, you can use it as base for
+ * phpMyAdmin sample configuration, you can use it as base for
  * manual configuration. For easier setup you can use setup/
  *
  * All directives are explained in documentation in the doc/ folder
  * or at <https://docs.phpmyadmin.net/>.
- *
- * @package PhpMyAdmin
  */
+
+declare(strict_types=1);
 
 /**
  * This is needed for cookie based authentication to encrypt password in
  * cookie. Needs to be 32 chars long.
  */
-$cfg['blowfish_secret'] = 'xampp'; /* YOU SHOULD CHANGE THIS FOR A MORE SECURE COOKIE AUTH! */
+$cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
 
 /**
  * Servers configuration
@@ -26,47 +25,38 @@ $i = 0;
  */
 $i++;
 /* Authentication type */
-//mysql://sf6mcpjg9mp3fqnc:zv91vgnxsb4bggba@kf3k4aywsrp0d2is.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/hwedspsyvc8ffi0y
 $cfg['Servers'][$i]['auth_type'] = 'config';
-$cfg['Servers'][$i]['user'] = 'ljin5ogk653pw6mq'; //change to yours
-$cfg['Servers'][$i]['password'] = 'zlteqsqk66bzqcr5'; //change to yours
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'; //change to yours
+$cfg['Servers'][$i]['host'] = 'ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+$cfg['Servers'][$i]['user'] = 'ljin5ogk653pw6mq';
+$cfg['Servers'][$i]['password'] = 'zlteqsqk66bzqcr5';
+$cfg['Servers'][$i]['extension'] = 'mysqli';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 /**
- * phpMyAdminLei configuration storage settings.
+ * phpMyAdmin configuration storage settings.
  */
 
 /* User used to manipulate with storage */
 // $cfg['Servers'][$i]['controlhost'] = '';
 // $cfg['Servers'][$i]['controlport'] = '';
-$cfg['Servers'][$i]['controluser'] = 'pma';
-$cfg['Servers'][$i]['controlpass'] = '';
+// $cfg['Servers'][$i]['controluser'] = 'pma';
+// $cfg['Servers'][$i]['controlpass'] = 'pmapass';
 
 /* Storage database and tables */
-$cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';
-$cfg['Servers'][$i]['bookmarktable'] = 'pma__bookmark';
-$cfg['Servers'][$i]['relation'] = 'pma__relation';
-$cfg['Servers'][$i]['table_info'] = 'pma__table_info';
-$cfg['Servers'][$i]['table_coords'] = 'pma__table_coords';
-$cfg['Servers'][$i]['pdf_pages'] = 'pma__pdf_pages';
-$cfg['Servers'][$i]['column_info'] = 'pma__column_info';
-$cfg['Servers'][$i]['history'] = 'pma__history';
-$cfg['Servers'][$i]['table_uiprefs'] = 'pma__table_uiprefs';
-$cfg['Servers'][$i]['tracking'] = 'pma__tracking';
-$cfg['Servers'][$i]['userconfig'] = 'pma__userconfig';
-$cfg['Servers'][$i]['recent'] = 'pma__recent';
-$cfg['Servers'][$i]['users'] = 'pma__users';
-$cfg['Servers'][$i]['usergroups'] = 'pma__usergroups';
-$cfg['Servers'][$i]['navigationhiding'] = 'pma__navigationhiding';
-$cfg['Servers'][$i]['savedsearches'] = 'pma__savedsearches';
-$cfg['Servers'][$i]['central_columns'] = 'pma__central_columns';
-$cfg['Servers'][$i]['designer_coords'] = 'pma__designer_coords';
-$cfg['Servers'][$i]['designer_settings'] = 'pma__designer_settings';
-$cfg['Servers'][$i]['export_templates'] = 'pma__export_templates';
-$cfg['Servers'][$i]['favorite'] = 'pma__favorite';
+// $cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';
+// $cfg['Servers'][$i]['bookmarktable'] = 'pma__bookmark';
+// $cfg['Servers'][$i]['relation'] = 'pma__relation';
+// $cfg['Servers'][$i]['table_info'] = 'pma__table_info';
+// $cfg['Servers'][$i]['table_coords'] = 'pma__table_coords';
+// $cfg['Servers'][$i]['pdf_pages'] = 'pma__pdf_pages';
+// $cfg['Servers'][$i]['column_info'] = 'pma__column_info';
+// $cfg['Servers'][$i]['history'] = 'pma__history';
+// $cfg['Servers'][$i]['table_uiprefs'] = 'pma__table_uiprefs';
+// $cfg['Servers'][$i]['tracking'] = 'pma__tracking';
+// $cfg['Servers'][$i]['userconfig'] = 'pma__userconfig';
+// $cfg['Servers'][$i]['recent'] = 'pma__recent';
 // $cfg['Servers'][$i]['favorite'] = 'pma__favorite';
 // $cfg['Servers'][$i]['users'] = 'pma__users';
 // $cfg['Servers'][$i]['usergroups'] = 'pma__usergroups';
@@ -152,7 +142,7 @@ $cfg['SaveDir'] = '';
 
 /**
  * Whether or not to query the user before sending the error report to
- * the phpMyAdminLei team when a JavaScript error occurs
+ * the phpMyAdmin team when a JavaScript error occurs
  *
  * Available options
  * ('ask' | 'always' | 'never')

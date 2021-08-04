@@ -1,5 +1,5 @@
 -- -------------------------------------------------------------
--- SQL Commands to upgrade pmadb for normal phpMyAdminLei operation
+-- SQL Commands to upgrade pmadb for normal phpMyAdmin operation
 -- with MySQL 4.1.2 and above.
 --
 -- This file is meant for use with MySQL 4.1.2 and above!

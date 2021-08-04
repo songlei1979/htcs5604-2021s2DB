@@ -1,6 +1,6 @@
 <?php
 /**
- * phpMyAdminLei ShapeFile library
+ * phpMyAdmin ShapeFile library
  * <https://github.com/phpmyadmin/shapefile/>.
  *
  * Copyright 2006-2007 Ovidio <ovidio AT users.sourceforge.net>

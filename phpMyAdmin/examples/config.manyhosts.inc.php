@@ -1,21 +1,19 @@
 <?php
 /**
- * This example configuration shows how to configure phpMyAdminLei for
+ * This example configuration shows how to configure phpMyAdmin for
  * many hosts that all have identical configuration otherwise. To add
  * a new host, just drop it into $hosts below. Contributed by
  * Matthew Hawkins.
- *
- * @package    PhpMyAdmin
- * @subpackage Example
  */
+
 declare(strict_types=1);
 
 $i = 0;
 $hosts =  [
-    "foo.example.com",
-    "bar.example.com",
-    "baz.example.com",
-    "quux.example.com",
+    'foo.example.com',
+    'bar.example.com',
+    'baz.example.com',
+    'quux.example.com',
 ];
 
 foreach ($hosts as $host) {

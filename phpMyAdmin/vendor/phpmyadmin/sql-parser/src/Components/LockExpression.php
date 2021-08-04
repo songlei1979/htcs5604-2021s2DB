@@ -2,6 +2,7 @@
 /**
  * Parses a reference to a LOCK expression.
  */
+
 declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Components;
@@ -111,6 +112,9 @@ class LockExpression extends Component
         return $component->table . ' ' . $component->type;
     }
 
+    /**
+     * @return string
+     */
     private static function parseLockType(Parser $parser, TokensList $list)
     {
         $lockType = '';

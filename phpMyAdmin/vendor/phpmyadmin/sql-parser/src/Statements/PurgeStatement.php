@@ -2,6 +2,7 @@
 /**
  * `PURGE` statement.
  */
+
 declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Statements;
@@ -125,7 +126,9 @@ class PurgeStatement extends Statement
      *
      * @param Parser $parser            the instance that requests parsing
      * @param Token  $token             token to be parsed
-     * @param Array  $expected_keywords array of possibly expected keywords at this point
+     * @param array  $expected_keywords array of possibly expected keywords at this point
+     *
+     * @return mixed|null
      */
     private static function parseExpectedKeyword($parser, $token, $expected_keywords)
     {

@@ -4,7 +4,7 @@
 -- This file is meant for use with MySQL 5 and above!
 --
 -- This script expects the user pma to already be existing. If we would put a
--- line here to create him too many users might just use this script and end
+-- line here to create them too many users might just use this script and end
 -- up with having the same password for the controluser.
 --
 -- This user "pma" must be defined in config.inc.php (controluser/controlpass)
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `pma__column_info` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`)
 )
-  COMMENT='Column information for phpMyAdminLei'
+  COMMENT='Column information for phpMyAdmin'
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 -- --------------------------------------------------------
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `pma__history` (
   PRIMARY KEY  (`id`),
   KEY `username` (`username`,`db`,`table`,`timevalue`)
 )
-  COMMENT='SQL history for phpMyAdminLei'
+  COMMENT='SQL history for phpMyAdmin'
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 -- --------------------------------------------------------
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `pma__pdf_pages` (
   PRIMARY KEY  (`page_nr`),
   KEY `db_name` (`db_name`)
 )
-  COMMENT='PDF relation pages for phpMyAdminLei'
+  COMMENT='PDF relation pages for phpMyAdmin'
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 -- --------------------------------------------------------
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `pma__table_coords` (
   `y` float unsigned NOT NULL default '0',
   PRIMARY KEY  (`db_name`,`table_name`,`pdf_page_number`)
 )
-  COMMENT='Table coordinates for phpMyAdminLei PDF output'
+  COMMENT='Table coordinates for phpMyAdmin PDF output'
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 -- --------------------------------------------------------
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `pma__table_info` (
   `display_field` varchar(64) NOT NULL default '',
   PRIMARY KEY  (`db_name`,`table_name`)
 )
-  COMMENT='Table information for phpMyAdminLei'
+  COMMENT='Table information for phpMyAdmin'
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 -- --------------------------------------------------------
@@ -220,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `pma__tracking` (
   `tracking_active` int(1) unsigned NOT NULL default '1',
   PRIMARY KEY  (`db_name`,`table_name`,`version`)
 )
-  COMMENT='Database changes tracking for phpMyAdminLei'
+  COMMENT='Database changes tracking for phpMyAdmin'
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 -- --------------------------------------------------------
@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `pma__userconfig` (
   `config_data` text NOT NULL,
   PRIMARY KEY  (`username`)
 )
-  COMMENT='User preferences storage for phpMyAdminLei'
+  COMMENT='User preferences storage for phpMyAdmin'
   DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 -- --------------------------------------------------------

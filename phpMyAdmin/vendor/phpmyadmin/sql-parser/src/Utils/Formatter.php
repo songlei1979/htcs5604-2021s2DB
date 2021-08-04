@@ -2,6 +2,7 @@
 /**
  * Utilities that are used for formatting queries.
  */
+
 declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Utils;
@@ -248,7 +249,7 @@ class Formatter
         ];
     }
 
-    private static function mergeFormats(array $formats, array $newFormats)
+    private static function mergeFormats(array $formats, array $newFormats): array
     {
         $added = [];
         $integers = [
@@ -434,7 +435,9 @@ class Formatter
                 }
 
                 // Checking if this clause ended.
-                if ($isClause = static::isClause($curr)) {
+                $isClause = static::isClause($curr);
+
+                if ($isClause) {
                     if (($isClause === 2 || $this->options['clause_newline'])
                         && empty(self::$SHORT_CLAUSES[$lastClause])
                     ) {
@@ -540,7 +543,7 @@ class Formatter
         return $ret;
     }
 
-    public function escapeConsole($string)
+    public function escapeConsole(string $string): string
     {
         return str_replace(
             [

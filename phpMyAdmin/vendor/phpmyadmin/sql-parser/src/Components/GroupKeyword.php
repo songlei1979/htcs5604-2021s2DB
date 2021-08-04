@@ -2,6 +2,7 @@
 /**
  * `GROUP BY` keyword parser.
  */
+
 declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Components;
@@ -19,6 +20,7 @@ use function trim;
  */
 class GroupKeyword extends Component
 {
+    /** @var mixed */
     public $type;
 
     /**

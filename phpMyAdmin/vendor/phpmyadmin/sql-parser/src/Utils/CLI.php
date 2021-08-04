@@ -2,6 +2,7 @@
 /**
  * CLI interface.
  */
+
 declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Utils;
@@ -15,7 +16,7 @@ use function implode;
 use function in_array;
 use function rtrim;
 use function stream_get_contents;
-use function stream_set_blocking;
+use function stream_select;
 use function var_export;
 use const STDIN;
 
@@ -24,6 +25,12 @@ use const STDIN;
  */
 class CLI
 {
+    /**
+     * @param string[]|false[] $params
+     * @param string[]         $longopts
+     *
+     * @return void
+     */
     public function mergeLongOpts(&$params, &$longopts)
     {
         foreach ($longopts as $value) {
@@ -34,17 +41,29 @@ class CLI
         }
     }
 
+    /**
+     * @return void
+     */
     public function usageHighlight()
     {
         echo "Usage: highlight-query --query SQL [--format html|cli|text] [--ansi]\n";
         echo "       cat file.sql | highlight-query\n";
     }
 
+    /**
+     * @param string $opt
+     * @param array  $long
+     *
+     * @return string[]|false[]|false
+     */
     public function getopt($opt, $long)
     {
         return getopt($opt, $long);
     }
 
+    /**
+     * @return mixed|false
+     */
     public function parseHighlight()
     {
         $longopts = [
@@ -75,6 +94,9 @@ class CLI
         return $params;
     }
 
+    /**
+     * @return int
+     */
     public function runHighlight()
     {
         $params = $this->parseHighlight();
@@ -89,7 +111,9 @@ class CLI
         }
 
         if (! isset($params['q'])) {
-            if ($stdIn = $this->readStdin()) {
+            $stdIn = $this->readStdin();
+
+            if ($stdIn) {
                 $params['q'] = $stdIn;
             }
         }
@@ -113,12 +137,18 @@ class CLI
         return 1;
     }
 
+    /**
+     * @return void
+     */
     public function usageLint()
     {
         echo "Usage: lint-query --query SQL [--ansi]\n";
         echo "       cat file.sql | lint-query\n";
     }
 
+    /**
+     * @return mixed
+     */
     public function parseLint()
     {
         $longopts = [
@@ -136,6 +166,9 @@ class CLI
         return $params;
     }
 
+    /**
+     * @return int
+     */
     public function runLint()
     {
         $params = $this->parseLint();
@@ -154,7 +187,9 @@ class CLI
         }
 
         if (! isset($params['q'])) {
-            if ($stdIn = $this->readStdin()) {
+            $stdIn = $this->readStdin();
+
+            if ($stdIn) {
                 $params['q'] = $stdIn;
             }
         }
@@ -183,12 +218,18 @@ class CLI
         return 1;
     }
 
+    /**
+     * @return void
+     */
     public function usageTokenize()
     {
         echo "Usage: tokenize-query --query SQL [--ansi]\n";
         echo "       cat file.sql | tokenize-query\n";
     }
 
+    /**
+     * @return mixed
+     */
     public function parseTokenize()
     {
         $longopts = [
@@ -205,6 +246,9 @@ class CLI
         return $params;
     }
 
+    /**
+     * @return int
+     */
     public function runTokenize()
     {
         $params = $this->parseTokenize();
@@ -219,7 +263,9 @@ class CLI
         }
 
         if (! isset($params['q'])) {
-            if ($stdIn = $this->readStdin()) {
+            $stdIn = $this->readStdin();
+
+            if ($stdIn) {
                 $params['q'] = $stdIn;
             }
         }
@@ -251,12 +297,24 @@ class CLI
         return 1;
     }
 
+    /**
+     * @return string|false
+     */
     public function readStdin()
     {
-        stream_set_blocking(STDIN, false);
-        $stdin = stream_get_contents(STDIN);
-        // restore-default block-mode setting
-        stream_set_blocking(STDIN, true);
+        $read = [STDIN];
+        $write = [];
+        $except = [];
+
+        // Assume there's nothing to be read from STDIN.
+        $stdin = null;
+
+        // Try to read from STDIN.  Wait 0.2 second before timing out.
+        $result = stream_select($read, $write, $except, 0, 2000);
+
+        if ($result > 0) {
+            $stdin = stream_get_contents(STDIN);
+        }
 
         return $stdin;
     }
